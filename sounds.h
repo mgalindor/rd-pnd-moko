@@ -1,12 +1,17 @@
 #include <Buzzer.h>
 
-#define WHITE  400
-#define HALF_DOTTED  WHITE + (WHITE/2)
-#define HALF  WHITE/2
-#define QUARTER_DOTTED  HALF_DOTTED/2
-#define QUARTER  HALF/2
-#define DOTTED_EIGHT  QUARTER_DOTTED/2
-#define EIGHT  QUARTER/2
+
+#define EIGHT  50
+#define DOTTED_EIGHT  EIGHT + (EIGHT/2)
+
+#define QUARTER  EIGHT*2
+#define QUARTER_DOTTED  QUARTER+EIGHT
+
+#define HALF  QUARTER*2
+#define HALF_DOTTED   HALF + QUARTER
+
+#define WHITE  HALF * 2
+#define WHITE_DOTTED  WHITE + HALF
 
 class Note {
 public:
@@ -19,52 +24,49 @@ public:
 };
 
 Note start_song[] = {
-	Note(NOTE_DS7,QUARTER),
-	Note(NOTE_FS7 , QUARTER_DOTTED),
-	Note(NOTE_DS7,QUARTER),
-	Note(NOTE_FS7 , QUARTER_DOTTED),
-	Note(NOTE_DS7,QUARTER),
-	Note(NOTE_B7 , QUARTER_DOTTED),
+  Note(NOTE_DS7,QUARTER),
+  Note(NOTE_FS7 , WHITE),
+  Note(NOTE_DS7,QUARTER),
+  Note(NOTE_FS7 , WHITE),
+  Note(NOTE_DS7,QUARTER),
+  Note(NOTE_B7 , WHITE_DOTTED),
 };
 
 Note end_song[] = {
-	Note(NOTE_B7,QUARTER),
-	Note(NOTE_DS7 , QUARTER),
-	Note(NOTE_FS7,QUARTER_DOTTED),
-	Note(0,EIGHT),
-	Note(NOTE_FS7 , EIGHT),
-	Note(0,EIGHT),
-	Note(NOTE_FS7,QUARTER),
-	Note(NOTE_B7 , HALF_DOTTED)
+  Note(NOTE_B7,QUARTER),
+  Note(NOTE_DS7 , QUARTER),
+  Note(NOTE_FS7,WHITE),
+  Note(0,EIGHT),
+  Note(NOTE_FS7 , EIGHT),
+  Note(0,EIGHT),
+  Note(NOTE_FS7,QUARTER),
+  Note(NOTE_B7 , WHITE_DOTTED)
 };
 
 Note working_song[] = {
-	Note(NOTE_DS7,HALF),
-	Note(0,QUARTER),
-	Note(NOTE_FS7,HALF),
-	Note(0,EIGHT),
-	Note(NOTE_DS7,HALF),
-	Note(0,QUARTER),
-	Note(NOTE_FS7,HALF),
+  Note(NOTE_DS7,HALF),
+  Note(0,QUARTER),
+  Note(NOTE_FS7,HALF),
+  Note(0,EIGHT),
+  Note(NOTE_DS7,HALF),
+  Note(0,QUARTER),
+  Note(NOTE_FS7,HALF),
 };
 
 Note confused_song[] = {
-	Note(NOTE_AS7,EIGHT),
-	Note(NOTE_B7 , DOTTED_EIGHT),
-	Note(NOTE_AS7,EIGHT),
-	Note(NOTE_B7 , DOTTED_EIGHT),
-	Note(NOTE_AS7,EIGHT),
-	Note(NOTE_B7 , DOTTED_EIGHT)
+  Note(NOTE_DS8,QUARTER_DOTTED),
+  Note(0,EIGHT),
+  Note(NOTE_GS8 , QUARTER)
 };
 
 Note confused_sleeping[] = {
-	Note(NOTE_DS7,HALF),
-	Note(0,EIGHT),
-	Note(NOTE_DS7,HALF),
-	Note(NOTE_FS7,WHITE),
-	Note(0,WHITE),
-	Note(NOTE_DS7,HALF),
-	Note(0,EIGHT),
-	Note(NOTE_DS7,HALF),
-	Note(NOTE_FS7,WHITE),
+  Note(NOTE_DS7,HALF),
+  Note(0,EIGHT),
+  Note(NOTE_DS7,HALF),
+  Note(NOTE_FS7,WHITE_DOTTED),
+  Note(0,WHITE),
+  Note(NOTE_DS7,HALF),
+  Note(0,EIGHT),
+  Note(NOTE_DS7,HALF),
+  Note(NOTE_FS7,WHITE_DOTTED),
 };
