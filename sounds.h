@@ -2,16 +2,16 @@
 
 
 #define EIGHT  50
-#define DOTTED_EIGHT  EIGHT + (EIGHT/2)
+#define DOTTED_EIGHT  (EIGHT) + (EIGHT/2)
 
 #define QUARTER  EIGHT*2
-#define QUARTER_DOTTED  QUARTER+EIGHT
+#define QUARTER_DOTTED  (QUARTER)+(EIGHT)
 
 #define HALF  QUARTER*2
-#define HALF_DOTTED   HALF + QUARTER
+#define HALF_DOTTED   (HALF) + (QUARTER)
 
 #define WHITE  HALF * 2
-#define WHITE_DOTTED  WHITE + HALF
+#define WHITE_DOTTED  (WHITE) + (HALF)
 
 class Note {
 public:
@@ -54,9 +54,9 @@ Note working_song[] = {
 };
 
 Note confused_song[] = {
-  Note(NOTE_DS8,QUARTER_DOTTED),
+  Note(NOTE_DS8,HALF),
   Note(0,EIGHT),
-  Note(NOTE_GS8 , QUARTER)
+  Note(NOTE_GS8 ,HALF)
 };
 
 Note confused_sleeping[] = {
