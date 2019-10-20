@@ -1,6 +1,13 @@
 /*
  * Color.cpp
  *
+ * Basic class implementation that represents a RGB channels of a Color , this class can be
+ * used to:
+ * - Save the data of a color (the r,g,b channels ant it's type represented with an int)
+ * - Given a list of known colors, determinate the type of a color using the shortest distance between the
+ *   current channels and the every element of the known colors with the Cartesian plane distance
+ *   (between two points) formula
+ *
  *  Created on: 7 sep. 2019
  *      Author: Miguel Galindo
  */
@@ -12,6 +19,7 @@ Color::Color(int redIn, int greenIn, int blueIn, int totalColors,
 	r = redIn;
 	g = greenIn;
 	b = blueIn;
+	wellKnown = false;
 	colorType = calculateColorType(totalColors, allColors);
 }
 
@@ -19,6 +27,7 @@ Color::Color(int red, int green, int blue, int colorTypeIn) {
 	r = red;
 	g = green;
 	b = blue;
+	wellKnown = true;
 	colorType = colorTypeIn;
 }
 
@@ -49,13 +58,15 @@ int Color::calculateColorType(int totalColors, Color allColors[]) {
 	double minorDistance = 0;
 	for (int i = 0; i < totalColors; i++) {
 		Color c = allColors[i];
-		double distance = getDistance(c);
-		if (distance == 0) {
-			resutlColorType = c.colorType;
-			break;
-		} else if (minorDistance == 0 || minorDistance > distance) {
-			minorDistance = distance;
-			resutlColorType = c.colorType;
+		if(c.wellKnown){
+			double distance = getDistance(c);
+			if (distance == 0) {
+				resutlColorType = c.colorType;
+				break;
+			} else if (minorDistance == 0 || minorDistance > distance) {
+				minorDistance = distance;
+				resutlColorType = c.colorType;
+			}
 		}
 	}
 	return resutlColorType;
