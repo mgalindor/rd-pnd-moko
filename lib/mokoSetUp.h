@@ -1,3 +1,4 @@
+#include "Color.h"
 
 #define STEPS 2048
 
@@ -35,8 +36,9 @@ enum ColorType {
 	NF, red, orange, yellow, green, blue, purple, pink, brown
 };
 
-Color allColors[] = { Color(19, 33, 25, ColorType::red), Color(11, 22, 21,
+const Color allColors[] = { Color(19, 33, 25, ColorType::red), Color(11, 22, 21,
 		ColorType::orange), Color(13, 16, 19, ColorType::yellow), Color(20, 18,
 		20, ColorType::green), Color(25, 21, 15, ColorType::blue), Color(15, 22,
 		14, ColorType::purple), Color(12, 27, 17, ColorType::pink), Color(23,
 		27, 24, ColorType::brown) };
+
