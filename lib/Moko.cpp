@@ -11,11 +11,11 @@ QUARTER), Note(NOTE_B7, WHITE_DOTTED) };
 
 Note Moko::END_SONG[] = { Note(NOTE_B7, QUARTER), Note(NOTE_DS7, QUARTER), Note(
 NOTE_FS7, WHITE), Note(0, EIGHT), Note(NOTE_FS7, EIGHT), Note(0, EIGHT), Note(
-		NOTE_FS7, QUARTER), Note(NOTE_B7, WHITE_DOTTED) };
+NOTE_FS7, QUARTER), Note(NOTE_B7, WHITE_DOTTED) };
 
 Note Moko::WORKING_SONG[] = { Note(NOTE_DS7, HALF), Note(0, QUARTER), Note(
 NOTE_FS7, HALF), Note(0, EIGHT), Note(NOTE_DS7, HALF), Note(0, QUARTER), Note(
-		NOTE_FS7, HALF) };
+NOTE_FS7, HALF) };
 
 Note Moko::CONFUSED_SONG[] = { Note(NOTE_DS8, HALF), Note(0, EIGHT), Note(
 NOTE_GS8, HALF) };
@@ -65,17 +65,11 @@ void Moko::playSoundSleeping() {
 }
 
 void Moko::moveForward() {
-	for (int i = 0; i < steps; i++) {
-		mRight->stepCCW();
-		mLeft->stepCW();
-	}
+	moveForward(steps);
 }
 
 void Moko::moveBackward() {
-	for (int i = 0; i < steps; i++) {
-		mRight->stepCW();
-		mLeft->stepCCW();
-	}
+	moveBackward(steps);
 }
 
 void Moko::moveForward(int numSteps) {
@@ -93,27 +87,25 @@ void Moko::moveBackward(int numSteps) {
 }
 
 void Moko::turnRight() {
-	int halfStep = steps / 2;
-	mRight->moveCCW(halfStep);
-	mLeft->moveCCW(halfStep);
+	turnRight(steps / 2);
 }
 
 void Moko::turnLeft() {
-	int halfStep = steps / 2;
-	mLeft->moveCW(halfStep);
-	mRight->moveCW(halfStep);
+	turnLeft(steps / 2);
 }
 
 void Moko::turnRight(int numSteps) {
-	int halfStep = numSteps / 2;
-	mRight->moveCCW(halfStep);
-	mLeft->moveCCW(halfStep);
+	for (int i = 0; i < numSteps; i++) {
+		mRight->stepCW();
+		mLeft->stepCW();
+	}
 }
 
 void Moko::turnLeft(int numSteps) {
-	int halfStep = steps / 2;
-	mLeft->moveCW(halfStep);
-	mRight->moveCW(halfStep);
+	for (int i = 0; i < numSteps; i++) {
+		mLeft->stepCCW();
+		mRight->stepCCW();
+	}
 }
 
 void Moko::setSteps(int steps) {
