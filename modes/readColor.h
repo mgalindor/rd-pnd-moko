@@ -3,7 +3,6 @@
 #include "../lib/Moko.h"
 #include "../lib/Color.h"
 #include "../lib/ColorSensor.h"
-#include "../lib/mokoSetUp.h"
 
 String results[] = { "Not Found", "red", "orange", "yellow", "green", "blue",
 		"purple", "pink", "brown" };
@@ -36,10 +35,12 @@ bool readColorLoop(Moko *moko, ColorSensor *colorSensor, bool started) {
 		case ColorType::orange:
 			moko->playSoundWorking();
 			moko->turnLeft();
+			moko->moveForward();
 			break;
 		case ColorType::purple:
 			moko->playSoundWorking();
 			moko->turnRight();
+			moko->moveForward();
 			break;
 		case ColorType::red:
 			moko->playSoundEnd();
