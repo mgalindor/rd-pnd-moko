@@ -10,16 +10,18 @@
  *      Author: Miguel Galindo
  */
 
-#ifndef COLOR_H_
-#define COLOR_H_
+#ifndef LIB_COLOR_H_
+#define LIB_COLOR_H_
 
 class Color {
 public:
+	Color(int r, int g, int b);
 	Color(int r, int g, int b, int totalColors, Color allColors[]);
 	Color(int r, int g, int b, int colorType);
 	int getR();
 	int getG();
 	int getB();
+	bool isWellKnow();
 	int getColorType();
 	double getDistance(Color color);
 
@@ -32,5 +34,5 @@ private:
 	int calculateColorType(int totalColors, Color allColors[]);
 };
 
-#endif /* COLOR_H_ */
+#endif /* LIB_COLOR_H_ */
 
