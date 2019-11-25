@@ -30,6 +30,12 @@ Moko::Moko(CheapStepper *mRight, CheapStepper *mLeft, Buzzer *buzzer) {
 	this->mLeft = mLeft;
 	this->buzzer = buzzer;
 	this->steps = 2048;
+
+	this->mRight->setTotalSteps(4096);
+	this->mRight->setRpm(15);
+
+	this->mLeft->setTotalSteps(4096);
+	this->mLeft->setRpm(15);
 }
 
 void Moko::playSound(Note notes[], int numberOfNotes) {
@@ -87,11 +93,11 @@ void Moko::moveBackward(int numSteps) {
 }
 
 void Moko::turnRight() {
-	turnRight(steps / 2);
+	turnRight(steps);
 }
 
 void Moko::turnLeft() {
-	turnLeft(steps / 2);
+	turnLeft(steps);
 }
 
 void Moko::turnRight(int numSteps) {
