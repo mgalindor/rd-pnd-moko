@@ -12,7 +12,16 @@
  *      Author: Miguel Galindo
  */
 #include "Color.h"
+
 #include <math.h>
+
+Color::Color(int redIn, int greenIn, int blueIn) {
+	r = redIn;
+	g = greenIn;
+	b = blueIn;
+	wellKnown = false;
+	colorType = 0;
+}
 
 Color::Color(int redIn, int greenIn, int blueIn, int totalColors,
 		Color allColors[]) {
@@ -47,6 +56,10 @@ int Color::getColorType() {
 	return colorType;
 }
 
+bool Color::isWellKnow() {
+	return wellKnown;
+}
+
 double Color::getDistance(Color color) {
 	double powAxis = pow(color.r - this->r, 2) + pow(color.g - this->g, 2)
 			+ pow(color.b - this->b, 2);
@@ -58,7 +71,7 @@ int Color::calculateColorType(int totalColors, Color allColors[]) {
 	double minorDistance = 0;
 	for (int i = 0; i < totalColors; i++) {
 		Color c = allColors[i];
-		if(c.wellKnown){
+		if (c.wellKnown) {
 			double distance = getDistance(c);
 			if (distance == 0) {
 				resutlColorType = c.colorType;
