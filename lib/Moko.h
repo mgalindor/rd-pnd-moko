@@ -33,6 +33,7 @@ public:
 	void turnLeft();
 	void turnRight(int numSteps);
 	void turnLeft(int numSteps);
+	void stop();
 	void setSteps(int steps);
 	static Note START_SONG[];
 	static Note END_SONG[];

@@ -80,16 +80,18 @@ void Moko::moveBackward() {
 
 void Moko::moveForward(int numSteps) {
 	for (int i = 0; i < numSteps; i++) {
-		mRight->stepCCW();
-		mLeft->stepCW();
+		mRight->stepCW();
+		mLeft->stepCCW();
 	}
+	stop();
 }
 
 void Moko::moveBackward(int numSteps) {
 	for (int i = 0; i < numSteps; i++) {
-		mRight->stepCW();
-		mLeft->stepCCW();
+		mRight->stepCCW();
+		mLeft->stepCW();
 	}
+	stop();
 }
 
 void Moko::turnRight() {
@@ -105,6 +107,7 @@ void Moko::turnRight(int numSteps) {
 		mRight->stepCW();
 		mLeft->stepCW();
 	}
+	stop();
 }
 
 void Moko::turnLeft(int numSteps) {
@@ -112,6 +115,12 @@ void Moko::turnLeft(int numSteps) {
 		mLeft->stepCCW();
 		mRight->stepCCW();
 	}
+	stop();
+}
+
+void Moko:: stop(){
+	mRight->stop();
+	mLeft->stop();
 }
 
 void Moko::setSteps(int steps) {

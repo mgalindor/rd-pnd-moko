@@ -37,7 +37,7 @@ void setup() {
 
 bool readColorLoop(Moko *moko, ColorSensor *colorSensor, bool started) {
 
-	bool inProcess = started;
+	bool process = started;
 
 	Color rgb = colorSensor->readColor();
 	int totalColors = sizeof(allColors) / sizeof(allColors[0]);
@@ -45,16 +45,16 @@ bool readColorLoop(Moko *moko, ColorSensor *colorSensor, bool started) {
 
 	int type = color.getColorType();
 	String typeString = results[type];
-	Serial.println(
-			" Color:[" + String(typeString) + "] Type:[" + String(type) + "]");
+	Serial.println("R:"+String(color.getR())+" G:"+String(color.getG())+" B:"+String(color.getB()));
+	Serial.println("Color:[" + String(typeString) + "] Type:[" + String(type) + "]");
 
-	if (!inProcess && type != ColorType::green) {
+	if (!process && type != ColorType::green) {
 		moko->playSoundSleeping();
-	} else if (!inProcess && type == ColorType::green) {
-		inProcess = true;
+	} else if (!process && type == ColorType::green) {
+		process = true;
 		moko->playSoundStart();
 		moko->moveForward();
-	} else if (inProcess) {
+	} else if (process) {
 		switch (type) {
 		case ColorType::blue:
 			moko->playSoundWorking();
@@ -72,14 +72,14 @@ bool readColorLoop(Moko *moko, ColorSensor *colorSensor, bool started) {
 			break;
 		case ColorType::red:
 			moko->playSoundEnd();
-			inProcess = false;
+			process = false;
 			break;
 		default:
 			moko->playSoundConfused();
 			break;
 		}
 	}
-	return inProcess;
+	return process;
 }
 
 
